@@ -1,13 +1,8 @@
 """
-Deploy project related functions
-- With virtualenv and virtualenvwrapper added
+Sample of a server with Debian + Django + virtualenvwrapper + supervisor.
 """
+from fabric.api import run, cd, prefix, settings, sudo
 
-from fabric.api import run, cd, prefix, env, settings, sudo
-
-env.hosts = ['user@111.111.11.11']
-env.user = "{youruser}"
-env.password = '{you password}'
 
 CLONE_PATH = "{path/to/your/project}"
 PROJECT_PATH = "{Your project path}"
@@ -27,7 +22,7 @@ SUPERVISOR_APPS = ["one app", "another app"]
 
 def install_git_pip():
     """
-    Install git and dependencies
+    Install git, pip and dependencies
     - Debian Like
     """
     run("sudo apt-get install git; git-core; python-pip")
